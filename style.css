@@ -1,0 +1,174 @@
+* {
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #edf0f5;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+#main-container{
+    height: 500px;
+    width: 500px;
+    display: flex;
+    background-color: rgb(75, 75, 75);
+    border: 1px solid black;
+    flex-direction: column;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+#area-resultado{
+    display: flex;
+    flex-grow: 3;
+    justify-content: center;
+    align-items: center;
+}
+
+#container-resultado{
+    display: flex;
+    background-color: aliceblue;
+    height: 80%;
+    width: 80%;
+    border-radius: 10px;
+    align-items: flex-end;
+    justify-content: flex-end;
+    
+}
+
+#container-botoes{
+    flex-grow: 6;
+    display: grid;
+    grid-template-areas: 
+        'on x xx xxx'
+        'off raiz porcentagem divisao'
+        'sete oito nove multiplicacao'
+        'quatro cinco seis subtracao'
+        'um dois tres soma'
+        'zero ponto result soma'
+    ;
+}
+
+
+
+.resultado{
+    padding: 0px 10px 10px 0px;
+    font-size: 30px;
+}
+
+.botoes-numeros{
+    color: white;
+    background-color: black;
+}
+
+.outros-botoes, .botoes-operacoes{
+    color: white;
+    background-color: gray;
+}
+
+.botoes-numeros, .botoes-operacoes, .outros-botoes{
+    margin: 5px;
+    border-radius: 20px;
+}
+
+#soma, #on{
+    background-color: aqua;
+}
+
+#on {
+    grid-area: on;
+}
+
+
+#x{
+    grid-area: x;
+}
+
+#xx{
+    grid-area: xx;
+}
+
+#xxx{
+    grid-area: xxx;
+}
+
+#off{
+    grid-area: off;
+}
+
+#raiz{
+    grid-area: raiz;
+}
+
+#porcentagem{
+    grid-area: porcentagem;
+}
+
+#multiplicacao{
+    grid-area: multiplicacao;
+}
+
+#divisao{
+    grid-area: divisao;
+}
+
+#subtracao{
+    grid-area: subtracao;
+}
+
+#soma{
+    grid-area: soma;
+}
+
+#ponto{
+    grid-area: ponto;
+}
+
+#result{
+    grid-area: result;
+}
+
+#zero{
+    grid-area: zero;
+}
+
+#um {
+    grid-area: um;
+}
+
+#dois {
+    grid-area: dois;
+}
+
+#tres {
+    grid-area: tres;
+}
+
+#quatro {
+    grid-area: quatro;
+}
+
+#cinco {
+    grid-area: cinco;
+}
+
+#seis{
+    grid-area: seis;
+}
+
+#sete{
+    grid-area: sete;
+}
+
+#oito{
+    grid-area: oito;
+}
+
+#nove{
+    grid-area: nove;
+}
