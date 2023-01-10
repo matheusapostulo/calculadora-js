@@ -1,21 +1,23 @@
 // constante do resultado
 const resultado = document.querySelector('.resultado')
+const fundo_resultado = document.querySelector('#container-resultado')
 
 // função para checar se a calculadora está ligada ou desligada
 function checarOnOff(){
     situacao = window.getComputedStyle(resultado).visibility
-    console.log('A calculadora está', situacao)
+    situacao_back = window.getComputedStyle(fundo_resultado).backgroundColor
+    console.log(`A calculadora está ${situacao} e a cor do fundo é a ${situacao_back}`)
     situacao == 'visible' ? true : false
 }
 
 // MUDAR A VISIBILITY DO ON/OFF
 checarOnOff()
-
 const botao_on = document.querySelector('#on')
 const botao_off = document.querySelector('#off')
 
 // botão on
 botao_on.addEventListener('click',() => {
+    fundo_resultado.style.backgroundColor = 'rgba(45, 85, 45, 0.596)'
     resultado.classList.remove('desligar')
     resultado.classList.add('ligar')
     console.log('Ligou')
@@ -24,25 +26,45 @@ botao_on.addEventListener('click',() => {
 
 // botão off
 botao_off.addEventListener('click', () =>{
+    fundo_resultado.style.backgroundColor = 'rgba(7, 15, 7, 0.596)'
     resultado.classList.add('desligar')
     console.log('Desligou')
     checarOnOff()
 })
 
-// Temos que checar 
+// Temos que checar a situação da calculadora para poder fazer as operações
 
 
 
 // Clique dos botões
 function cliqueNumero(e){
     e.preventDefault()
-
-    console.log(e.target.id)
+    console.log(e.target.value)
+    resultado.innerHTML = e.target.value
 }
 
-const numero_1 = document.querySelector('#um')
+// Obtendo os botões de números
+const botoes_numeros = document.querySelectorAll('#container-botoes .botoes-numeros')
+console.log(botoes_numeros)
 
-numero_1.onclick = cliqueNumero
+// Criando variáveis para os números de 0 à 9
+for (var n = 0; n <= 9; n++){
+    window['numero_'+n] = botoes_numeros[n]
+}
+// Criando a variável do ponto que não é um número
+
+// Capturando os eventos dos botões 
+numero_0.addEventListener('click', cliqueNumero)
+numero_1.addEventListener('click', cliqueNumero)
+numero_2.addEventListener('click', cliqueNumero)
+numero_3.addEventListener('click', cliqueNumero)
+numero_4.addEventListener('click', cliqueNumero)
+numero_5.addEventListener('click', cliqueNumero)
+numero_6.addEventListener('click', cliqueNumero)
+numero_7.addEventListener('click', cliqueNumero)
+numero_8.addEventListener('click', cliqueNumero)
+numero_9.addEventListener('click', cliqueNumero)
+
 
 
 // uma funcao para fazer as operações
