@@ -7,11 +7,10 @@ function checarOnOff(){
     situacao = window.getComputedStyle(resultado).visibility
     situacao_back = window.getComputedStyle(fundo_resultado).backgroundColor
     console.log(`A calculadora está ${situacao} e a cor do fundo é a ${situacao_back}`)
-    situacao == 'visible' ? true : false
+    return situacao == 'visible' ? true : false
 }
 
 // MUDAR A VISIBILITY DO ON/OFF
-checarOnOff()
 const botao_on = document.querySelector('#on')
 const botao_off = document.querySelector('#off')
 
@@ -21,7 +20,7 @@ botao_on.addEventListener('click',() => {
     resultado.classList.remove('desligar')
     resultado.classList.add('ligar')
     console.log('Ligou')
-    checarOnOff()
+    console.log(checarOnOff())
 })
 
 // botão off
@@ -29,12 +28,8 @@ botao_off.addEventListener('click', () =>{
     fundo_resultado.style.backgroundColor = 'rgba(7, 15, 7, 0.596)'
     resultado.classList.add('desligar')
     console.log('Desligou')
-    checarOnOff()
+    console.log(checarOnOff())
 })
-
-// Temos que checar a situação da calculadora para poder fazer as operações
-
-
 
 // Clique dos botões
 function cliqueNumero(e){
@@ -52,18 +47,23 @@ for (var n = 0; n <= 9; n++){
     window['numero_'+n] = botoes_numeros[n]
 }
 // Criando a variável do ponto que não é um número
+const botao_ponto = document.querySelector('#ponto')
 
-// Capturando os eventos dos botões 
-numero_0.addEventListener('click', cliqueNumero)
-numero_1.addEventListener('click', cliqueNumero)
-numero_2.addEventListener('click', cliqueNumero)
-numero_3.addEventListener('click', cliqueNumero)
-numero_4.addEventListener('click', cliqueNumero)
-numero_5.addEventListener('click', cliqueNumero)
-numero_6.addEventListener('click', cliqueNumero)
-numero_7.addEventListener('click', cliqueNumero)
-numero_8.addEventListener('click', cliqueNumero)
-numero_9.addEventListener('click', cliqueNumero)
+// Capturando os eventos dos botões se a calculadora estiver ligada
+if (checarOnOff() == true){
+    numero_0.addEventListener('click', cliqueNumero)
+    numero_1.addEventListener('click', cliqueNumero)
+    numero_2.addEventListener('click', cliqueNumero)
+    numero_3.addEventListener('click', cliqueNumero)
+    numero_4.addEventListener('click', cliqueNumero)
+    numero_5.addEventListener('click', cliqueNumero)
+    numero_6.addEventListener('click', cliqueNumero)
+    numero_7.addEventListener('click', cliqueNumero)
+    numero_8.addEventListener('click', cliqueNumero)
+    numero_9.addEventListener('click', cliqueNumero)
+    botao_ponto.addEventListener('click', cliqueNumero)
+} 
+
 
 
 
