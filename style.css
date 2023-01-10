@@ -45,7 +45,7 @@ body{
     flex-grow: 6;
     display: grid;
     grid-template-areas: 
-        'on x xx xxx'
+        'on on C C'
         'off raiz porcentagem divisao'
         'sete oito nove multiplicacao'
         'quatro cinco seis subtracao'
@@ -53,8 +53,6 @@ body{
         'zero ponto result soma'
     ;
 }
-
-
 
 .resultado{
     padding: 0px 10px 10px 0px;
@@ -76,6 +74,15 @@ body{
     border-radius: 20px;
 }
 
+/* botão ligar e desligar resultado */
+.ligar{
+    visibility: visible;
+}
+
+.desligar{
+    visibility: hidden;
+}
+
 #soma, #on{
     background-color: rgb(0, 185, 185);
 }
@@ -85,8 +92,8 @@ body{
 }
 
 
-#x{
-    grid-area: x;
+#C{
+    grid-area: C;
 }
 
 #xx{
