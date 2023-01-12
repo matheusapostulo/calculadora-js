@@ -1,6 +1,7 @@
-// constante do resultado
+// Constantes essenciais da calculadora
 const resultado = document.querySelector('.resultado')
 const fundo_resultado = document.querySelector('#container-resultado')
+const array_numeros = []
 
 // função para checar se a calculadora está ligada ou desligada
 function checarOnOff(){
@@ -19,6 +20,7 @@ botao_on.addEventListener('click',() => {
     fundo_resultado.style.backgroundColor = 'rgba(45, 85, 45, 0.596)'
     resultado.classList.remove('desligar')
     resultado.classList.add('ligar')
+    resultado.innerHTML = 0  // aqui pode vir uma função pra resetar a conta 
     console.log('Ligou')
     console.log(checarOnOff())
 })
@@ -33,14 +35,17 @@ botao_off.addEventListener('click', () =>{
 
 // Clique dos botões
 function cliqueNumero(e){
-    e.preventDefault()
-    console.log(e.target.value)
-    resultado.innerHTML = e.target.value
+    if (checarOnOff() == true){
+        console.log(`Estado da calculadora = ${checarOnOff()}`)
+        array_numeros.push(e.target.value)
+        console.log(array_numeros)
+        resultado.innerHTML = array_numeros
+    }
 }
 
 // Obtendo os botões de números
 const botoes_numeros = document.querySelectorAll('#container-botoes .botoes-numeros')
-console.log(botoes_numeros)
+// console.log(botoes_numeros)
 
 // Criando variáveis para os números de 0 à 9
 for (var n = 0; n <= 9; n++){
@@ -50,30 +55,19 @@ for (var n = 0; n <= 9; n++){
 const botao_ponto = document.querySelector('#ponto')
 
 // Capturando os eventos dos botões se a calculadora estiver ligada
-if (checarOnOff() == true){
-    numero_0.addEventListener('click', cliqueNumero)
-    numero_1.addEventListener('click', cliqueNumero)
-    numero_2.addEventListener('click', cliqueNumero)
-    numero_3.addEventListener('click', cliqueNumero)
-    numero_4.addEventListener('click', cliqueNumero)
-    numero_5.addEventListener('click', cliqueNumero)
-    numero_6.addEventListener('click', cliqueNumero)
-    numero_7.addEventListener('click', cliqueNumero)
-    numero_8.addEventListener('click', cliqueNumero)
-    numero_9.addEventListener('click', cliqueNumero)
-    botao_ponto.addEventListener('click', cliqueNumero)
-} 
+numero_0.addEventListener('click', cliqueNumero)
+numero_1.addEventListener('click', cliqueNumero)
+numero_2.addEventListener('click', cliqueNumero)
+numero_3.addEventListener('click', cliqueNumero)
+numero_4.addEventListener('click', cliqueNumero)
+numero_5.addEventListener('click', cliqueNumero)
+numero_6.addEventListener('click', cliqueNumero)
+numero_7.addEventListener('click', cliqueNumero)
+numero_8.addEventListener('click', cliqueNumero)
+numero_9.addEventListener('click', cliqueNumero)
+botao_ponto.addEventListener('click', cliqueNumero)
 
 
-
-
-// uma funcao para fazer as operações
-//// se tiver uma operação já pode começar a exibir
-//// condicionais para evitar operações invalidas 
-
-// uma funcao para apagar tudo
-
-// uma funcao para apagar um número por um
 
 
 
