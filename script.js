@@ -30,7 +30,11 @@ function cliqueBotao(e){
     console.log(`Estado da calculadora = ${checarOnOff()}`)
     if (checarOnOff() == true){
         validarNumeroBotao(e.target.value)
-        resultado.textContent = array_numeros
+        let string_numeros = ''
+            array_numeros.forEach(e =>{
+            string_numeros += e
+        })
+        resultado.textContent = string_numeros // exibe os números digitados na tela 
     }
 }
 
