@@ -75,7 +75,7 @@ const botao_off = document.querySelector('#off')
 
 // botão on
 botao_on.addEventListener('click',() => {
-    fundo_resultado.style.backgroundColor = 'rgba(45, 85, 45, 0.596)'
+    fundo_resultado.style.backgroundColor = 'rgba(72, 136, 72, 0.596)'
     resultado.classList.remove('desligar')
     resultado.classList.add('ligar')
     console.log('Ligou')
