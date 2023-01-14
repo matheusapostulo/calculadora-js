@@ -9,18 +9,19 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
 }
 
 #main-container{
-    height: 500px;
-    width: 500px;
+    height: 450px;
+    width: 300px;
     display: flex;
     background-color: rgb(75, 75, 75);
     border: 3px solid black;
     flex-direction: column;
     border-radius: 20px;
     padding: 10px;
+
 }
 
 #area-resultado{
