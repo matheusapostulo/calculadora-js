@@ -58,8 +58,12 @@ function resultadoFinal(){
         // Iremos usar o eval para fazer as operações direto nessa string (possível brecha)
         resultado_final = eval(string_resultado)
         console.log(resultado_final)
+
         // Por fim, mostraremos o resultado na tela
         resultado.textContent = resultado_final
+
+        // Zerando o vetor para as próximas operações
+        array_numeros.length = 0
     }
 }
 
