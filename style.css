@@ -46,8 +46,8 @@ body{
     flex-grow: 6;
     display: grid;
     grid-template-areas: 
-        'on on C C'
-        'off raiz porcentagem divisao'
+        'on on off off'
+        'C raiz porcentagem divisao'
         'sete oito nove multiplicacao'
         'quatro cinco seis subtracao'
         'um dois tres soma'

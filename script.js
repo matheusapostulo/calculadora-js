@@ -3,7 +3,7 @@ const resultado = document.querySelector('.resultado')
 const fundo_resultado = document.querySelector('#container-resultado')
 const array_numeros = []
 
-// função para checar se a calculadora está ligada ou desligada
+// Função para checar se a calculadora está ligada ou desligada
 function checarOnOff(){
     situacao = window.getComputedStyle(resultado).visibility
     situacao_back = window.getComputedStyle(fundo_resultado).backgroundColor
@@ -11,17 +11,18 @@ function checarOnOff(){
     return situacao == 'visible' ? true : false
 }
 
-// Função que vai validar os números/operações 
-function validarNumeroBotao(numero_botao){
-    if(array_numeros[array_numeros.length-1] != numero_botao){
-        array_numeros.push(numero_botao)
-    }
+// Função usada para saber se é um botao de numero ou operacao
+function checarNumeroOperacao(elemento_dom){
+    return elemento_dom.classList.contains("botoes-operacoes") ? "operacao" : "numero"
 }
 
-function resultadoFinal(){
-    console.log(`Estado da calculadora = ${checarOnOff()}`)
-    if (checarOnOff() == true){
-
+// Função que vai validar os números/operações 
+function validarNumeroBotao(numero_botao, classe_elemento){
+    console.log(classe_elemento)
+    let ultimo_elemento = array_numeros[array_numeros.length-1]
+    // Condicionais que pode adicionar ao array/tela
+    if((array_numeros.length == 0 && classe_elemento != "botoes-operacoes") || (isNaN(ultimo_elemento) == false && classe_elemento == 'botoes-numeros') || (isNaN(ultimo_elemento) == false && classe_elemento == 'botoes-operacoes') || (isNaN(ultimo_elemento) == true && classe_elemento == 'botoes-numeros')) {
+        array_numeros.push(numero_botao)
     }
 }
 
@@ -29,7 +30,8 @@ function resultadoFinal(){
 function cliqueBotao(e){
     console.log(`Estado da calculadora = ${checarOnOff()}`)
     if (checarOnOff() == true){
-        validarNumeroBotao(e.target.value)
+        const classe_elemento = e.target.className
+        validarNumeroBotao(e.target.value, classe_elemento)
         let string_numeros = ''
             array_numeros.forEach(e =>{
             string_numeros += e
@@ -38,9 +40,27 @@ function cliqueBotao(e){
     }
 }
 
-const apagarTudo = function(){
+// Função que apaga toda a operação
+function apagarTudo(){
     resultado.textContent = 0  // aqui pode vir uma função pra resetar a conta
     array_numeros.length = 0 // apagando os elementos do vetor por estar resetando
+}
+
+// Função que faz o cálculo de fato
+function resultadoFinal(){
+    console.log(`Estado da calculadora = ${checarOnOff()}`)
+    if (checarOnOff() == true){
+        console.log('CALCULANDO...')
+        let string_resultado = ''
+            array_numeros.forEach(e =>{
+            string_resultado += e
+        })
+        // Iremos usar o eval para fazer as operações direto nessa string (possível brecha)
+        resultado_final = eval(string_resultado)
+        console.log(resultado_final)
+        // Por fim, mostraremos o resultado na tela
+        resultado.textContent = resultado_final
+    }
 }
 
 // MUDAR A VISIBILITY DO ON/OFF
@@ -104,13 +124,13 @@ botao_ponto.addEventListener('click', cliqueBotao)
 soma.addEventListener('click', cliqueBotao)
 subtracao.addEventListener('click', cliqueBotao)
 multiplicacao.addEventListener('click', cliqueBotao)
-porcentagem.addEventListener('click', resultadoFinal)
+porcentagem.addEventListener('click', cliqueBotao)
 raiz.addEventListener('click', cliqueBotao)
 divisao.addEventListener('click', cliqueBotao) // Se clicar no botão do resultado iremos concluir a operação
 c_apaga.addEventListener('click', apagarTudo) // Se clicar no "C" apaga tudo
 
+result.addEventListener('click', resultadoFinal) 
 
-
-
-
-
+// O QUE FALTA?
+// VAI FALTAR TRATAR AS OPERAÇÕES DE PORCENTAGEM E RAIZ
+// CONTROLAR O ESTILO DE QUANDO PASSAR DA TELA DO PAINEL
