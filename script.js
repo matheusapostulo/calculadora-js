@@ -138,5 +138,6 @@ c_apaga.addEventListener('click', apagarTudo) // Se clicar no "C" apaga tudo
 result.addEventListener('click', resultadoFinal) 
 
 // O QUE FALTA?
-// VAI FALTAR TRATAR AS OPERAÇÕES DE PORCENTAGEM E RAIZ
-// CONTROLAR O ESTILO DE QUANDO PASSAR DA TELA DO PAINEL
+//// VAI FALTAR TRATAR AS OPERAÇÕES DE PORCENTAGEM E RAIZ
+//// CONTROLAR O ESTILO DE QUANDO PASSAR DA TELA DO PAINEL
+//// COLOCAR UM FUNDO 
