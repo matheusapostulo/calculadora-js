@@ -36,7 +36,9 @@ function cliqueBotao(e){
             array_numeros.forEach(e =>{
             string_numeros += e
         })
-        resultado.textContent = string_numeros // exibe os números digitados na tela 
+        if (string_numeros != ''){ // exibir na tela apenas se tiver algo pra exibir(evitar exibir um array/string vazio)
+            resultado.textContent = string_numeros // exibe os números digitados na tela
+        }        
     }
 }
 
