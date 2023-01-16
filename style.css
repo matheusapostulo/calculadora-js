@@ -10,7 +10,7 @@
 }
 
 body{
-    background: rgb(227, 228, 228);
+    background: rgb(188, 219, 219);
     margin: 0;
     height: 100vh;
     display: flex;
@@ -86,6 +86,14 @@ body{
     border-radius: 20px;
 }
 
+.botoes-numeros:active, .botoes-operacoes:active, .outros-botoes:active{
+    background-color: rgb(63, 63, 63);
+    box-shadow: 7px 6px 28px 1px rgba(221, 221, 221, 0.24);
+    transform: translateY(2px);
+}
+
+
+
 /* botão ligar e desligar resultado */
 .ligar{
     visibility: visible;
@@ -97,7 +105,7 @@ body{
 
 
 #soma, #on{
-    background-color: #1a515e;
+    background-color: #379b9b;
 }
 
 #on {
@@ -194,5 +202,5 @@ body{
 }
 
 .resultado{
-    overflow-block: hidden;
+    overflow: hidden;
 }

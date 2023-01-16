@@ -50,8 +50,7 @@ function apagarTudo(){
 
 // Função que faz o cálculo de fato
 function resultadoFinal(){
-    console.log(`Estado da calculadora = ${checarOnOff()}`)
-    if (checarOnOff() == true){
+    if (checarOnOff() == true && array_numeros.length != 0){
         console.log('CALCULANDO...')
         let string_resultado = ''
             array_numeros.forEach(e =>{
@@ -130,8 +129,8 @@ botao_ponto.addEventListener('click', cliqueBotao)
 soma.addEventListener('click', cliqueBotao)
 subtracao.addEventListener('click', cliqueBotao)
 multiplicacao.addEventListener('click', cliqueBotao)
-porcentagem.addEventListener('click', cliqueBotao)
-raiz.addEventListener('click', cliqueBotao)
+// porcentagem.addEventListener('click', cliqueBotao)
+// raiz.addEventListener('click', cliqueBotao)
 divisao.addEventListener('click', cliqueBotao) // Se clicar no botão do resultado iremos concluir a operação
 c_apaga.addEventListener('click', apagarTudo) // Se clicar no "C" apaga tudo
 
