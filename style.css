@@ -53,7 +53,7 @@ body{
     display: grid;
     grid-template-areas: 
         'on on off off'
-        'C raiz porcentagem divisao'
+        'C C raiz divisao'
         'sete oito nove multiplicacao'
         'quatro cinco seis subtracao'
         'um dois tres soma'

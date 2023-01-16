@@ -11,17 +11,12 @@ function checarOnOff(){
     return situacao == 'visible' ? true : false
 }
 
-// Função usada para saber se é um botao de numero ou operacao
-function checarNumeroOperacao(elemento_dom){
-    return elemento_dom.classList.contains("botoes-operacoes") ? "operacao" : "numero"
-}
-
 // Função que vai validar os números/operações 
-function validarNumeroBotao(numero_botao, classe_elemento){
+function validarNumeroBotao(numero_botao, classe_elemento, id_operacao){
     console.log(classe_elemento)
     let ultimo_elemento = array_numeros[array_numeros.length-1]
     // Condicionais que pode adicionar ao array/tela
-    if((array_numeros.length == 0 && classe_elemento != "botoes-operacoes") || (isNaN(ultimo_elemento) == false && classe_elemento == 'botoes-numeros') || (isNaN(ultimo_elemento) == false && classe_elemento == 'botoes-operacoes') || (isNaN(ultimo_elemento) == true && classe_elemento == 'botoes-numeros')) {
+    if((array_numeros.length == 0 && classe_elemento != "botoes-operacoes") || (array_numeros.length == 0 && id_operacao == "raiz") || (isNaN(ultimo_elemento) == false && classe_elemento == 'botoes-numeros') || (isNaN(ultimo_elemento) == false && classe_elemento == 'botoes-operacoes' && id_operacao != 'raiz') || (isNaN(ultimo_elemento) == true && classe_elemento == 'botoes-numeros')) {
         array_numeros.push(numero_botao)
     }
 }
@@ -31,7 +26,7 @@ function cliqueBotao(e){
     console.log(`Estado da calculadora = ${checarOnOff()}`)
     if (checarOnOff() == true){
         const classe_elemento = e.target.className
-        validarNumeroBotao(e.target.value, classe_elemento)
+        validarNumeroBotao(e.target.value, classe_elemento, e.target.id)
         let string_numeros = ''
             array_numeros.forEach(e =>{
             string_numeros += e
@@ -51,19 +46,42 @@ function apagarTudo(){
 // Função que faz o cálculo de fato
 function resultadoFinal(){
     if (checarOnOff() == true && array_numeros.length != 0){
+        console.log(array_numeros)
         console.log('CALCULANDO...')
         let string_resultado = ''
             array_numeros.forEach(e =>{
             string_resultado += e
         })
-        // Iremos usar o eval para fazer as operações direto nessa string (possível brecha)
-        resultado_final = eval(string_resultado)
-        console.log(resultado_final)
 
+        // SE O RESULTADO FOR DE UM CÁLCULO DE RAIZ...
+        if(string_resultado[0] == '√'){
+            // Retirando a raiz para fazer a conta no JS com o número (raiz sempre na primeira posição do vetor)
+            var tirando_raiz = string_resultado.split('√')
+            console.log(tirando_raiz)
+            console.log(isNaN(tirando_raiz[1]))
+            // Verificando se há contas para fazer na string sem raiz (conta está na posição 1 do vetor)
+            if(isNaN(tirando_raiz[1]) == true){
+                console.log("ENTROU NO IF")
+                var numeros_da_conta = tirando_raiz[1]
+                var numeros_sem_raiz = eval(numeros_da_conta)
+            } else {
+                var numeros_sem_raiz = parseFloat(tirando_raiz[1])
+            }
+
+            console.log(numeros_sem_raiz)
+
+            // Fazendo o calculo final
+            resultado_final = Math.sqrt(numeros_sem_raiz)
+
+        // SE O RESULTADO FOR OUTRO TIPO DE OPERAÇÃO
+        } else {
+            var resultado_final = eval(string_resultado)
+            console.log(resultado_final)
+        }
         // Por fim, mostraremos o resultado na tela
         resultado.textContent = resultado_final
 
-        // Zerando o vetor para as próximas operações
+        //Zerando o vetor para as próximas operações
         array_numeros.length = 0
     }
 }
@@ -129,14 +147,14 @@ botao_ponto.addEventListener('click', cliqueBotao)
 soma.addEventListener('click', cliqueBotao)
 subtracao.addEventListener('click', cliqueBotao)
 multiplicacao.addEventListener('click', cliqueBotao)
-// porcentagem.addEventListener('click', cliqueBotao)
-// raiz.addEventListener('click', cliqueBotao)
+raiz.addEventListener('click', cliqueBotao)
 divisao.addEventListener('click', cliqueBotao) // Se clicar no botão do resultado iremos concluir a operação
 c_apaga.addEventListener('click', apagarTudo) // Se clicar no "C" apaga tudo
 
+// Resultado final
 result.addEventListener('click', resultadoFinal) 
 
 // O QUE FALTA?
-//// VAI FALTAR TRATAR AS OPERAÇÕES DE PORCENTAGEM E RAIZ
+//// FALTA OPERAÇÃO DE PORCENTAGEM
 //// CONTROLAR O ESTILO DE QUANDO PASSAR DA TELA DO PAINEL
-//// COLOCAR UM FUNDO 
+
