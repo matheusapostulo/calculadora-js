@@ -154,7 +154,5 @@ c_apaga.addEventListener('click', apagarTudo) // Se clicar no "C" apaga tudo
 // Resultado final
 result.addEventListener('click', resultadoFinal) 
 
-// O QUE FALTA?
-//// FALTA OPERAÇÃO DE PORCENTAGEM
-//// CONTROLAR O ESTILO DE QUANDO PASSAR DA TELA DO PAINEL
+
 
