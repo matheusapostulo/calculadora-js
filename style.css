@@ -47,7 +47,6 @@ body{
     border-radius: 10px;
     align-items: flex-end;
     justify-content: flex-end;
-    box-sizing:
 }
 
 #container-botoes{
@@ -82,7 +81,6 @@ body{
     background-color: rgba(150, 148, 148, 0.596);
 }
 ::-webkit-scrollbar{
-    margin: 0;
     height: 10px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
